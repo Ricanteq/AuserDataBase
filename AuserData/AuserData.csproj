@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Areas\UserController.cs\Controllers"/>
+        <Folder Include="Areas\UserController.cs\Data"/>
+        <Folder Include="Areas\UserController.cs\Models"/>
+        <Folder Include="Areas\UserController.cs\Views"/>
+        <Folder Include="Areas\UserController\Controllers"/>
+        <Folder Include="Areas\UserController\Data"/>
+        <Folder Include="Areas\UserController\Models"/>
+        <Folder Include="Areas\UserController\Views"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\UserData.Features\UserData.Features.csproj"/>
+        <ProjectReference Include="..\UserData.Models\UserData.Models.csproj"/>
+        <ProjectReference Include="..\UserData.Persistence\UserData.Persistence.csproj"/>
+    </ItemGroup>
+
+</Project>
