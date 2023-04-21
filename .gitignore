@@ -1,0 +1,49 @@
+# Visual Studio files
+.vs/
+bin/
+obj/
+
+# Build results
+*.dll
+*.exe
+*.pdb
+*.zip
+*.tgz
+*.gz
+*.rar
+*.7z
+*.msi
+*.vsix
+*.nupkg
+*.pdb
+
+# NuGet packages
+**/packages/
+
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+
+# Logs and databases
+logs/
+*.log
+*.sqlite
+*.sqlite3
+*.mdf
+*.ldf
+
+# Other generated files
+*.js.map
+*.css.map
+
+# Mac-specific files
+.DS_Store
+
+# Connection settings
+/appsettings.json
+/appsettings.Development.json
