@@ -2,12 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuserData", "AuserData\AuserData.csproj", "{09ECEA8F-9929-4587-8662-10C3F2D04807}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserData.Models", "UserData.Models\UserData.Models.csproj", "{269647C9-9681-48A1-8E27-DFCB1E75A66A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserData.Features", "UserData.Features\UserData.Features.csproj", "{6E6E3602-D944-4FD7-878C-81A9EB6950A6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserData.Persistence", "UserData.Persistence\UserData.Persistence.csproj", "{30E5ACC7-D857-4305-8817-52917B2682FE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,17 +12,5 @@ Global
 		{09ECEA8F-9929-4587-8662-10C3F2D04807}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09ECEA8F-9929-4587-8662-10C3F2D04807}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09ECEA8F-9929-4587-8662-10C3F2D04807}.Release|Any CPU.Build.0 = Release|Any CPU
-		{269647C9-9681-48A1-8E27-DFCB1E75A66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{269647C9-9681-48A1-8E27-DFCB1E75A66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{269647C9-9681-48A1-8E27-DFCB1E75A66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{269647C9-9681-48A1-8E27-DFCB1E75A66A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E6E3602-D944-4FD7-878C-81A9EB6950A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E6E3602-D944-4FD7-878C-81A9EB6950A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E6E3602-D944-4FD7-878C-81A9EB6950A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E6E3602-D944-4FD7-878C-81A9EB6950A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30E5ACC7-D857-4305-8817-52917B2682FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30E5ACC7-D857-4305-8817-52917B2682FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30E5ACC7-D857-4305-8817-52917B2682FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30E5ACC7-D857-4305-8817-52917B2682FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

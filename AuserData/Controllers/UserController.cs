@@ -78,10 +78,10 @@ public class UserController : ControllerBase
 }
 */
 
+using AuserData.Data;
+using AuserData.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using UserData.Models;
-using UserData.Persistence.Data;
 
 namespace AuserData.Controllers;
 

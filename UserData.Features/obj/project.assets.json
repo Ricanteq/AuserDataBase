@@ -1278,11 +1278,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rican\\Sources\\Ricanteq\\AuserData\\UserData.Features\\UserData.Features.csproj",
+      "projectUniqueName": "C:\\Users\\rican\\Sources\\Ricanteq\\AuserDataBase\\UserData.Features\\UserData.Features.csproj",
       "projectName": "UserData.Features",
-      "projectPath": "C:\\Users\\rican\\Sources\\Ricanteq\\AuserData\\UserData.Features\\UserData.Features.csproj",
+      "projectPath": "C:\\Users\\rican\\Sources\\Ricanteq\\AuserDataBase\\UserData.Features\\UserData.Features.csproj",
       "packagesPath": "C:\\Users\\rican\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rican\\Sources\\Ricanteq\\AuserData\\UserData.Features\\obj\\",
+      "outputPath": "C:\\Users\\rican\\Sources\\Ricanteq\\AuserDataBase\\UserData.Features\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rican\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1297,11 +1297,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\rican\\Sources\\Ricanteq\\AuserData\\UserData.Models\\UserData.Models.csproj": {
-              "projectPath": "C:\\Users\\rican\\Sources\\Ricanteq\\AuserData\\UserData.Models\\UserData.Models.csproj"
+            "C:\\Users\\rican\\Sources\\Ricanteq\\AuserDataBase\\UserData.Models\\UserData.Models.csproj": {
+              "projectPath": "C:\\Users\\rican\\Sources\\Ricanteq\\AuserDataBase\\UserData.Models\\UserData.Models.csproj"
             },
-            "C:\\Users\\rican\\Sources\\Ricanteq\\AuserData\\UserData.Persistence\\UserData.Persistence.csproj": {
-              "projectPath": "C:\\Users\\rican\\Sources\\Ricanteq\\AuserData\\UserData.Persistence\\UserData.Persistence.csproj"
+            "C:\\Users\\rican\\Sources\\Ricanteq\\AuserDataBase\\UserData.Persistence\\UserData.Persistence.csproj": {
+              "projectPath": "C:\\Users\\rican\\Sources\\Ricanteq\\AuserDataBase\\UserData.Persistence\\UserData.Persistence.csproj"
             }
           }
         }
