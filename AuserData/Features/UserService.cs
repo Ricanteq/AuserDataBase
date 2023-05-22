@@ -1,5 +1,115 @@
-﻿using AuserData.Data;
+﻿/*using AuserData.Data;
 using AuserData.Models;
+using FluentValidation;
+using FluentValidation.Results;
+using Microsoft.EntityFrameworkCore;
+
+
+namespace AuserData.Features
+{
+    public class UserService : IUserService
+    {
+        private readonly DataContext _context;
+
+        public UserService(DataContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<ValidationResult> ValidateUserAsync(User user)
+        {
+            UserValidator validator = new UserValidator();
+            return await validator.ValidateAsync(user);
+        }
+
+        public async Task<bool> CheckEmailExistsAsync(string email)
+        {
+            return await _context.Users.AnyAsync(u => u.Email.ToLower() == email.ToLower());
+        }
+
+        public async Task<User> CreateUserAsync(User user)
+        {
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
+
+            return user;
+        }
+
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            return await _context.Users.ToListAsync();
+        }
+
+        public async Task<User> GetUserByIdAsync(int id)
+        {
+            return await _context.Users.FindAsync(id);
+        }
+
+        public async Task<bool> CheckUserExistsAsync(int id)
+        {
+            return await _context.Users.AnyAsync(u => u.Id == id);
+        }
+
+        public async Task UpdateUserAsync(int id, User updatedUser)
+        {
+            var userToUpdate = await _context.Users.FindAsync(id);
+            if (userToUpdate != null)
+            {
+                userToUpdate.FirstName = updatedUser.FirstName ?? userToUpdate.FirstName;
+                userToUpdate.LastName = updatedUser.LastName ?? userToUpdate.LastName;
+                userToUpdate.Email = updatedUser.Email ?? userToUpdate.Email;
+
+                if (!string.IsNullOrWhiteSpace(updatedUser.Password))
+                {
+                    userToUpdate.Password = BCrypt.Net.BCrypt.HashPassword(updatedUser.Password);
+                }
+
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteUserAsync(int id)
+        {
+            var userToDelete = await _context.Users.FindAsync(id);
+            if (userToDelete != null)
+            {
+                _context.Users.Remove(userToDelete);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<User> LoginUserAsync(string email, string password)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email.ToLower() == email.ToLower());
+            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
+            {
+                return user;
+            }
+
+            return null;
+        }
+
+
+        public class UserValidator : AbstractValidator<User>
+        {
+            public UserValidator()
+            {
+                RuleFor(u => u.FirstName).NotEmpty().WithMessage("Firstname cannot be empty");
+                RuleFor(u => u.LastName).NotEmpty().WithMessage("Lastname cannot be empty");
+                RuleFor(u => u.Email).NotEmpty().WithMessage("Email cannot be empty");
+                RuleFor(u => u.Email).EmailAddress().WithMessage("Invalid email address");
+                RuleFor(u => u.Password).NotEmpty().WithMessage("Password cannot be empty");
+            }
+        }
+    }
+}*/
+
+using AuserData.Data;
+using AuserData.Models;
+using AuserData.Validators;
+using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuserData.Features;
@@ -13,14 +123,20 @@ public class UserService : IUserService
         _context = context;
     }
 
-    public async Task<User> CreateUser(User user)
+    public async Task<ValidationResult> ValidateUserAsync(User user)
     {
-        if (string.IsNullOrWhiteSpace(user.FirstName)) throw new ArgumentException("Firstname cannot be empty");
-        if (user.LastName == null) throw new ArgumentException("Lastname cannot be empty");
-        if (user.Email == null) throw new ArgumentException("Email cannot be empty");
-        if (user.Password == null) throw new ArgumentException("Password cannot be empty");
+        var validator = new UserValidator();
+        return await validator.ValidateAsync(user);
+    }
 
-        user.Password = HashPassword(user.Password);
+    public async Task<bool> CheckEmailExistsAsync(string email)
+    {
+        return await _context.Users.AnyAsync(u => u.Email.ToLower() == email.ToLower());
+    }
+
+    public async Task<User> CreateUserAsync(User user)
+    {
+        user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
         await _context.Users.AddAsync(user);
         await _context.SaveChangesAsync();
@@ -28,52 +144,52 @@ public class UserService : IUserService
         return user;
     }
 
-    private string HashPassword(string password)
+    public async Task<List<User>> GetAllUsersAsync()
     {
-        return BCrypt.Net.BCrypt.HashPassword(password);
+        return await _context.Users.ToListAsync();
     }
 
-    public IQueryable<User> GetAllUsers()
-    {
-        return _context.Users;
-    }
-
-    public async Task<User> GetUserById(int id)
+    public async Task<User> GetUserByIdAsync(int id)
     {
         return await _context.Users.FindAsync(id);
     }
 
-    public async Task<bool> VerifyPassword(User user, string password)
+    public async Task<bool> CheckUserExistsAsync(int id)
     {
-        return BCrypt.Net.BCrypt.Verify(password, user.Password);
+        return await _context.Users.AnyAsync(u => u.Id == id);
     }
 
-    public async Task UpdateUser(User user)
+    public async Task UpdateUserAsync(int id, User updatedUser)
     {
-        user.Password = HashPassword(user.Password);
+        var userToUpdate = await _context.Users.FindAsync(id);
+        if (userToUpdate != null)
+        {
+            userToUpdate.FirstName = updatedUser.FirstName ?? userToUpdate.FirstName;
+            userToUpdate.LastName = updatedUser.LastName ?? userToUpdate.LastName;
+            userToUpdate.Email = updatedUser.Email ?? userToUpdate.Email;
 
-        _context.Users.Update(user);
-        await _context.SaveChangesAsync();
+            if (!string.IsNullOrWhiteSpace(updatedUser.Password))
+                userToUpdate.Password = BCrypt.Net.BCrypt.HashPassword(updatedUser.Password);
+
+            await _context.SaveChangesAsync();
+        }
     }
 
-    public async Task DeleteUser(int id)
+    public async Task DeleteUserAsync(int id)
     {
-        var user = await _context.Users.FindAsync(id);
-
-        if (user == null) return;
-
-        _context.Users.Remove(user);
-        await _context.SaveChangesAsync();
+        var userToDelete = await _context.Users.FindAsync(id);
+        if (userToDelete != null)
+        {
+            _context.Users.Remove(userToDelete);
+            await _context.SaveChangesAsync();
+        }
     }
 
-    public async Task<User> LoginUser(string email, string password)
+    public async Task<User> LoginUserAsync(string email, string password)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Email.ToLower() == email.ToLower());
+        if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password)) return user;
 
-        if (user == null) return null;
-
-        var passwordMatches = await VerifyPassword(user, password);
-
-        return passwordMatches ? user : null;
+        return null;
     }
 }
